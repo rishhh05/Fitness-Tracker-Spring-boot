@@ -25,7 +25,7 @@ public class ActivityService {
                 .startTime(activityRequest.getStartTime())
                 .type(activityRequest.getActivityType())
                 .additionalMetrics(activityRequest.getAdditionalMetrics())
-                .build(); //TODO set recommendation attribute
+                .build();
 
         Activity activity1 = activityRepository.save(activity) ;
         return mapToResponse(activity1);

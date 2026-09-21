@@ -6,6 +6,7 @@ import in.rishh.fitness_tracker.Dto.RegisterRequest;
 import in.rishh.fitness_tracker.Dto.RegisterResponse;
 import in.rishh.fitness_tracker.Services.JwtService;
 import in.rishh.fitness_tracker.Services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,7 +28,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest registerRequest) throws RoleNotFoundException {
+    public ResponseEntity<RegisterResponse> register(@Valid @RequestBody RegisterRequest registerRequest) throws RoleNotFoundException {
         RegisterResponse registerResponse = userService.register(registerRequest);
         return ResponseEntity.ok(registerResponse);
     }

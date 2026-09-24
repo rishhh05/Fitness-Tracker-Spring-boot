@@ -20,6 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder // allows to create User object using builder pattern. uses @AllArgsConstructor backstage.
+@Table(name = "fitness_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

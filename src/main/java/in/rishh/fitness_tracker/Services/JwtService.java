@@ -1,6 +1,7 @@
 package in.rishh.fitness_tracker.Services;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -13,10 +14,11 @@ import java.time.Instant;
 import java.util.List;
 
 @Data
+@RequiredArgsConstructor
 @Service
 public class JwtService {
 
-    private JwtEncoder jwtEncoder; // our custom bean will be injected
+    private final JwtEncoder jwtEncoder; // our custom bean will be injected
 
     @Value("${jwt.issuer}")
     private String issuer;

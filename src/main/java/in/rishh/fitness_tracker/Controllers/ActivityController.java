@@ -16,8 +16,8 @@ public class ActivityController {
     private final ActivityService activityService;
 
     @PostMapping
-    public ResponseEntity<ActivityResponse> createActivity(@RequestBody ActivityRequest activityRequest,String userId){
-        ActivityResponse activityResp = activityService.createActivity(userId,activityRequest);
+    public ResponseEntity<ActivityResponse> createActivity(@RequestBody ActivityRequest activityRequest){
+        ActivityResponse activityResp = activityService.createActivity(activityRequest.getUserId(),activityRequest);
         return ResponseEntity.ok(activityResp);
     }
 

@@ -47,7 +47,7 @@ public class SecurityConfig {
     ){
         return new ProviderManager(daoAuthenticationProvider); // set our custom DaoAuthenticationProvider in ProviderManager which will then handle username and password authentication type
     }
-
+    @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity httpSec,
             JwtAuthenticationConverter jwtAuthenticationConverter
@@ -55,7 +55,16 @@ public class SecurityConfig {
 
         httpSec.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth ->
-                auth.requestMatchers("/auth/register","/auth/login").permitAll()
+                auth
+                        .requestMatchers(
+                                "/api/auth/register",
+                                "/api/auth/login"
+                        ).permitAll()
+                        .requestMatchers(
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui/**",
+                                        "/swagger-ui.html"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->

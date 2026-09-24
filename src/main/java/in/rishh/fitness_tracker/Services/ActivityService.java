@@ -2,6 +2,7 @@ package in.rishh.fitness_tracker.Services;
 
 import in.rishh.fitness_tracker.Dto.ActivityRequest;
 import in.rishh.fitness_tracker.Dto.ActivityResponse;
+import in.rishh.fitness_tracker.Entities.ActivityType;
 import in.rishh.fitness_tracker.Repository.ActivityRepository;
 import in.rishh.fitness_tracker.Entities.Activity;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,7 @@ public class ActivityService {
         ActivityResponse activityResponse = new ActivityResponse();
 
         activityResponse.setUserId(activity.getUser().getId());
-        activityResponse.setActivityId(activity.getUser().getId());
+        activityResponse.setActivityId(activity.getId());
         activityResponse.setType(activity.getType());
         activityResponse.setStartTime(activity.getStartTime());
         activityResponse.setDuration(activity.getDuration());
